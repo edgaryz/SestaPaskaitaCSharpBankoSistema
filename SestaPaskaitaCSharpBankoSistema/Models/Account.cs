@@ -5,12 +5,15 @@
         public string Number { get; set; }
         public double Balance { get; set; }
         public List<Transaction> Transactions { get; set; }
-        public Account() { }
-        public Account(string number, double balance, List<Transaction> transaction)
+        public Account()
+        {
+
+        }
+        public Account(string number, double balance)
         {
             Number = number;
-            Balance = balance;
-            Transactions = transaction;
+            Balance += balance;
+            Transactions = new List<Transaction>();
         }
 
         public void Deposit(double amount)
@@ -21,7 +24,7 @@
 
         public void Withdraw(double amount)
         {
-            // cia reikia surasti transakcija
+            Transactions.Add(new Transaction(amount, "Withdraw"));
             Balance -= amount;
         }
 
